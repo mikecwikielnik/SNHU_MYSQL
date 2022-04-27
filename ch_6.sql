@@ -34,12 +34,17 @@ SELECT
 	ar.ArtistId as [ArtistId From Artists Table],
 	al.ArtistId as [ArtistId From Albums Table],
 	ar.Name as [Artist Name],
-	al.Title as [Album Title]
+	al.Title as [Album Title],
+	t.Composer as [Composer]
 FROM
 	artists as ar
 LEFT OUTER JOIN
 	albums as al
 ON
 	ar.ArtistId = al.ArtistId
+INNER JOIN
+	tracks as t
+ON
+	al.AlbumId = t.AlbumId
 WHERE 
-	al.ArtistId IS NULL
+	t.Composer IS NULL
