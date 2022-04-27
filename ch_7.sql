@@ -5,11 +5,14 @@ SQL Quickstart Guide
 */
 
 SELECT 
-	sum(total) as [total sales],
-	avg(total) as [avg invoice],
-	count(total) as [invoices count],
-	max(total) as [invoice max]
+	BillingCountry,
+	BillingCity,
+	round(avg(total), 2) [AVG]
 FROM
 	invoices
-
+GROUP BY
+	BillingCountry, 
+	BillingCity
+ORDER BY
+	BillingCountry
 
